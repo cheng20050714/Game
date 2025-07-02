@@ -867,6 +867,7 @@
  /opt/homebrew/Cellar/qt/6.9.1/lib/QtCore.framework/Versions/A/Headers/QRectF
  /opt/homebrew/Cellar/qt/6.9.1/lib/QtCore.framework/Versions/A/Headers/QSize
  /opt/homebrew/Cellar/qt/6.9.1/lib/QtCore.framework/Versions/A/Headers/QSizeF
+ /opt/homebrew/Cellar/qt/6.9.1/lib/QtCore.framework/Versions/A/Headers/QString
  /opt/homebrew/Cellar/qt/6.9.1/lib/QtCore.framework/Versions/A/Headers/QTimer
  /opt/homebrew/Cellar/qt/6.9.1/lib/QtCore.framework/Versions/A/Headers/QUrl
  /opt/homebrew/Cellar/qt/6.9.1/lib/QtCore.framework/Versions/A/Headers/QVector
@@ -2501,7 +2502,9 @@ CMakeFiles/Game.dir/Game_autogen/mocs_compilation.cpp.o
  /opt/homebrew/lib/QtCore.framework/Headers/QObject
  /opt/homebrew/lib/QtCore.framework/Headers/QPointF
  /opt/homebrew/lib/QtCore.framework/Headers/QRandomGenerator
+ /opt/homebrew/lib/QtCore.framework/Headers/QRect
  /opt/homebrew/lib/QtCore.framework/Headers/QRectF
+ /opt/homebrew/lib/QtCore.framework/Headers/QString
  /opt/homebrew/lib/QtCore.framework/Headers/QTimer
  /opt/homebrew/lib/QtCore.framework/Headers/QUrl
  /opt/homebrew/lib/QtCore.framework/Headers/QVector
@@ -2513,6 +2516,7 @@ CMakeFiles/Game.dir/Game_autogen/mocs_compilation.cpp.o
  /opt/homebrew/lib/QtCore.framework/Headers/qpoint.h
  /opt/homebrew/lib/QtCore.framework/Headers/qrandom.h
  /opt/homebrew/lib/QtCore.framework/Headers/qrect.h
+ /opt/homebrew/lib/QtCore.framework/Headers/qstring.h
  /opt/homebrew/lib/QtCore.framework/Headers/qtimer.h
  /opt/homebrew/lib/QtCore.framework/Headers/qurl.h
  /opt/homebrew/lib/QtCore.framework/Headers/qvector.h
@@ -3630,7 +3634,9 @@ CMakeFiles/Game.dir/main.cpp.o
  /opt/homebrew/lib/QtCore.framework/Headers/QObject
  /opt/homebrew/lib/QtCore.framework/Headers/QPointF
  /opt/homebrew/lib/QtCore.framework/Headers/QRandomGenerator
+ /opt/homebrew/lib/QtCore.framework/Headers/QRect
  /opt/homebrew/lib/QtCore.framework/Headers/QRectF
+ /opt/homebrew/lib/QtCore.framework/Headers/QString
  /opt/homebrew/lib/QtCore.framework/Headers/QTimer
  /opt/homebrew/lib/QtCore.framework/Headers/QUrl
  /opt/homebrew/lib/QtCore.framework/Headers/QVector
@@ -3641,6 +3647,7 @@ CMakeFiles/Game.dir/main.cpp.o
  /opt/homebrew/lib/QtCore.framework/Headers/qpoint.h
  /opt/homebrew/lib/QtCore.framework/Headers/qrandom.h
  /opt/homebrew/lib/QtCore.framework/Headers/qrect.h
+ /opt/homebrew/lib/QtCore.framework/Headers/qstring.h
  /opt/homebrew/lib/QtCore.framework/Headers/qtimer.h
  /opt/homebrew/lib/QtCore.framework/Headers/qurl.h
  /opt/homebrew/lib/QtCore.framework/Headers/qvector.h
@@ -4774,7 +4781,9 @@ CMakeFiles/Game.dir/mainwindow.cpp.o
  /opt/homebrew/lib/QtCore.framework/Headers/QObject
  /opt/homebrew/lib/QtCore.framework/Headers/QPointF
  /opt/homebrew/lib/QtCore.framework/Headers/QRandomGenerator
+ /opt/homebrew/lib/QtCore.framework/Headers/QRect
  /opt/homebrew/lib/QtCore.framework/Headers/QRectF
+ /opt/homebrew/lib/QtCore.framework/Headers/QString
  /opt/homebrew/lib/QtCore.framework/Headers/QTimer
  /opt/homebrew/lib/QtCore.framework/Headers/QUrl
  /opt/homebrew/lib/QtCore.framework/Headers/QVector
@@ -4786,6 +4795,7 @@ CMakeFiles/Game.dir/mainwindow.cpp.o
  /opt/homebrew/lib/QtCore.framework/Headers/qpoint.h
  /opt/homebrew/lib/QtCore.framework/Headers/qrandom.h
  /opt/homebrew/lib/QtCore.framework/Headers/qrect.h
+ /opt/homebrew/lib/QtCore.framework/Headers/qstring.h
  /opt/homebrew/lib/QtCore.framework/Headers/qtimer.h
  /opt/homebrew/lib/QtCore.framework/Headers/qurl.h
  /opt/homebrew/lib/QtCore.framework/Headers/qvector.h

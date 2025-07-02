@@ -1075,6 +1075,9 @@ CMakeFiles/Game.dir/Game_autogen/mocs_compilation.cpp.o: \
   /opt/homebrew/include/QtMultimedia/qtmultimediaexports.h \
   /opt/homebrew/include/QtMultimedia/qaudio.h \
   /opt/homebrew/include/QtCore/qurl.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/QString \
+  /opt/homebrew/lib/QtCore.framework/Headers/qstring.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/QRect \
   /Users/cheng/Documents/Practical\ Training/Game/build/qt6-Debug/Game_autogen/EWIEGA46WW/moc_mainwindow.cpp \
   /Users/cheng/Documents/Practical\ Training/Game/build/qt6-Debug/Game_autogen/EWIEGA46WW/../../../../mainwindow.h \
   /opt/homebrew/lib/QtWidgets.framework/Headers/QMainWindow \
