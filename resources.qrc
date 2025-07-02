@@ -1,0 +1,44 @@
+<RCC>
+    <qresource prefix="/res">
+        <file>Resources/background.png</file>
+        <file>Resources/barrel_fire_1.png</file>
+        <file>Resources/barrel_fire_2.png</file>
+        <file>Resources/barrel_fire_3.png</file>
+        <file>Resources/barrel_idle.png</file>
+        <file>Resources/battery.png</file>
+        <file>Resources/bgm.mp3</file>
+        <file>Resources/bullet.png</file>
+        <file>Resources/chicken_fast_1.png</file>
+        <file>Resources/chicken_fast_2.png</file>
+        <file>Resources/chicken_fast_3.png</file>
+        <file>Resources/chicken_fast_4.png</file>
+        <file>Resources/chicken_medium_1.png</file>
+        <file>Resources/chicken_medium_2.png</file>
+        <file>Resources/chicken_medium_3.png</file>
+        <file>Resources/chicken_medium_4.png</file>
+        <file>Resources/chicken_medium_5.png</file>
+        <file>Resources/chicken_medium_6.png</file>
+        <file>Resources/chicken_slow_1.png</file>
+        <file>Resources/chicken_slow_2.png</file>
+        <file>Resources/chicken_slow_3.png</file>
+        <file>Resources/chicken_slow_4.png</file>
+        <file>Resources/chicken_slow_5.png</file>
+        <file>Resources/chicken_slow_6.png</file>
+        <file>Resources/chicken_slow_7.png</file>
+        <file>Resources/chicken_slow_8.png</file>
+        <file>Resources/crosshair.png</file>
+        <file>Resources/explosion_1.png</file>
+        <file>Resources/explosion_2.png</file>
+        <file>Resources/explosion_3.png</file>
+        <file>Resources/explosion_4.png</file>
+        <file>Resources/explosion_5.png</file>
+        <file>Resources/explosion.wav</file>
+        <file>Resources/fire_1.wav</file>
+        <file>Resources/fire_2.wav</file>
+        <file>Resources/fire_3.wav</file>
+        <file>Resources/heart.png</file>
+        <file>Resources/hurt.wav</file>
+        <file>Resources/IPix.ttf</file>
+        <file>Resources/loss.mp3</file>
+    </qresource>
+</RCC>
