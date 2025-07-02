@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/res">
+        <!-- 顶层资源 -->
         <file>Resources/background.png</file>
         <file>Resources/barrel_fire_1.png</file>
         <file>Resources/barrel_fire_2.png</file>
@@ -40,5 +41,105 @@
         <file>Resources/hurt.wav</file>
         <file>Resources/IPix.ttf</file>
         <file>Resources/loss.mp3</file>
+
+        <!-- joke_bear -->
+        <file>Resources/joke_bear/joke_bear_1-0.png</file>
+        <file>Resources/joke_bear/joke_bear_1-1.png</file>
+        <file>Resources/joke_bear/joke_bear_1-2.png</file>
+        <file>Resources/joke_bear/joke_bear_1-3.png</file>
+        <file>Resources/joke_bear/joke_bear_1-4.png</file>
+        <file>Resources/joke_bear/joke_bear_1-5.png</file>
+        <file>Resources/joke_bear/joke_bear_1-6.png</file>
+        <file>Resources/joke_bear/joke_bear_1-7.png</file>
+        <file>Resources/joke_bear/joke_bear_1-8.png</file>
+        <file>Resources/joke_bear/joke_bear_1-9.png</file>
+        <file>Resources/joke_bear/joke_bear_1-10.png</file>
+        <file>Resources/joke_bear/joke_bear_1-11.png</file>
+
+        <!-- joke_bear_2 -->
+        <file>Resources/joke_bear_2/joke_bear_2-0.png</file>
+        <file>Resources/joke_bear_2/joke_bear_2-1.png</file>
+        <file>Resources/joke_bear_2/joke_bear_2-2.png</file>
+        <file>Resources/joke_bear_2/joke_bear_2-3.png</file>
+        <file>Resources/joke_bear_2/joke_bear_2-4.png</file>
+        <file>Resources/joke_bear_2/joke_bear_2-5.png</file>
+        <file>Resources/joke_bear_2/joke_bear_2-6.png</file>
+        <file>Resources/joke_bear_2/joke_bear_2-7.png</file>
+        <file>Resources/joke_bear_2/joke_bear_2-8.png</file>
+        <file>Resources/joke_bear_2/joke_bear_2-9.png</file>
+        <file>Resources/joke_bear_2/joke_bear_2-10.png</file>
+        <file>Resources/joke_bear_2/joke_bear_2-11.png</file>
+
+        <!-- joke_bear_3 -->
+        <file>Resources/joke_bear_3/joke_bear_3-0.png</file>
+        <file>Resources/joke_bear_3/joke_bear_3-1.png</file>
+        <file>Resources/joke_bear_3/joke_bear_3-2.png</file>
+        <file>Resources/joke_bear_3/joke_bear_3-3.png</file>
+        <file>Resources/joke_bear_3/joke_bear_3-4.png</file>
+        <file>Resources/joke_bear_3/joke_bear_3-5.png</file>
+        <file>Resources/joke_bear_3/joke_bear_3-6.png</file>
+        <file>Resources/joke_bear_3/joke_bear_3-7.png</file>
+        <file>Resources/joke_bear_3/joke_bear_3-8.png</file>
+
+        <!-- chiikawa_1 -->
+        <file>Resources/chiikawa_1/chiikawa_1-0.png</file>
+        <file>Resources/chiikawa_1/chiikawa_1-1.png</file>
+        <file>Resources/chiikawa_1/chiikawa_1-2.png</file>
+        <file>Resources/chiikawa_1/chiikawa_1-3.png</file>
+        <file>Resources/chiikawa_1/chiikawa_1-4.png</file>
+        <file>Resources/chiikawa_1/chiikawa_1-5.png</file>
+        <file>Resources/chiikawa_1/chiikawa_1-6.png</file>
+        <file>Resources/chiikawa_1/chiikawa_1-7.png</file>
+        <file>Resources/chiikawa_1/chiikawa_1-8.png</file>
+        <file>Resources/chiikawa_1/chiikawa_1-9.png</file>
+        <file>Resources/chiikawa_1/chiikawa_1-10.png</file>
+        <file>Resources/chiikawa_1/chiikawa_1-11.png</file>
+        <file>Resources/chiikawa_1/chiikawa_1-12.png</file>
+        <file>Resources/chiikawa_1/chiikawa_1-13.png</file>
+        <file>Resources/chiikawa_1/chiikawa_1-14.png</file>
+        <file>Resources/chiikawa_1/chiikawa_1-15.png</file>
+        <file>Resources/chiikawa_1/chiikawa_1-16.png</file>
+        <file>Resources/chiikawa_1/chiikawa_1-17.png</file>
+
+        <!-- chiikawa_2 -->
+        <file>Resources/chiikawa_2/chiikawa_2-0.png</file>
+        <file>Resources/chiikawa_2/chiikawa_2-1.png</file>
+        <file>Resources/chiikawa_2/chiikawa_2-2.png</file>
+        <file>Resources/chiikawa_2/chiikawa_2-3.png</file>
+        <file>Resources/chiikawa_2/chiikawa_2-4.png</file>
+        <file>Resources/chiikawa_2/chiikawa_2-5.png</file>
+        <file>Resources/chiikawa_2/chiikawa_2-6.png</file>
+        <file>Resources/chiikawa_2/chiikawa_2-7.png</file>
+        <file>Resources/chiikawa_2/chiikawa_2-8.png</file>
+        <file>Resources/chiikawa_2/chiikawa_2-9.png</file>
+        <file>Resources/chiikawa_2/chiikawa_2-10.png</file>
+        <file>Resources/chiikawa_2/chiikawa_2-11.png</file>
+        <file>Resources/chiikawa_2/chiikawa_2-12.png</file>
+        <file>Resources/chiikawa_2/chiikawa_2-13.png</file>
+        <file>Resources/chiikawa_2/chiikawa_2-14.png</file>
+        <file>Resources/chiikawa_2/chiikawa_2-15.png</file>
+        <file>Resources/chiikawa_2/chiikawa_2-16.png</file>
+        <file>Resources/chiikawa_2/chiikawa_2-17.png</file>
+        <file>Resources/chiikawa_2/chiikawa_2-18.png</file>
+        <file>Resources/chiikawa_2/chiikawa_2-19.png</file>
+        <file>Resources/chiikawa_2/chiikawa_2-20.png</file>
+        <file>Resources/chiikawa_2/chiikawa_2-21.png</file>
+
+        <!-- chiikawa_3 -->
+        <file>Resources/chiikawa_3/chiikawa_3-0.png</file>
+        <file>Resources/chiikawa_3/chiikawa_3-1.png</file>
+        <file>Resources/chiikawa_3/chiikawa_3-2.png</file>
+        <file>Resources/chiikawa_3/chiikawa_3-3.png</file>
+        <file>Resources/chiikawa_3/chiikawa_3-4.png</file>
+        <file>Resources/chiikawa_3/chiikawa_3-5.png</file>
+
+        <!-- boss_explosion -->
+        <file>Resources/boss_explosion/explosion_1.png</file>
+        <file>Resources/boss_explosion/explosion_2.png</file>
+        <file>Resources/boss_explosion/explosion_3.png</file>
+        <file>Resources/boss_explosion/explosion_4.png</file>
+        <file>Resources/boss_explosion/explosion_5.png</file>
+
+        <file>Resources/words_list.txt</file>
     </qresource>
 </RCC>

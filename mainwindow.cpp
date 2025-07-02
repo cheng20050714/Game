@@ -20,15 +20,16 @@ MainWindow::MainWindow(QWidget *parent)
     , timerGenerate(new Timer(this))
     , timerIncreaseNumPerGen(new Timer(this))
 {
+
+    // 这个代码设置了鼠标跟踪功能
     ui->setupUi(this);
     setMouseTracking(true);
-    ui->centralwidget->setMouseTracking(true); // 若使用了 centralWidget
+    ui->centralwidget->setMouseTracking(true);
 
     // 设置窗口属性
-    setWindowTitle("Chicken Invaders Qt");
+    setWindowTitle("VERSION2");
     setFixedSize(1280, 720);
     setCursor(Qt::BlankCursor);
-
 
 
     // 加载资源
@@ -36,8 +37,9 @@ MainWindow::MainWindow(QWidget *parent)
 
 
     // 设置生成小鸡的定时器
+    // 修改这部分可以修改小鸡生成频率
     timerGenerate->set_one_shot(false);
-    timerGenerate->set_wait_time(1.5f);
+    timerGenerate->set_wait_time(3.0f);
     timerGenerate->set_on_timeout([this](){
         for (int i = 0; i < numPerGen; i++) {
             int val = QRandomGenerator::global()->bounded(100);
@@ -57,7 +59,7 @@ MainWindow::MainWindow(QWidget *parent)
     timerIncreaseNumPerGen->set_one_shot(false);
     timerIncreaseNumPerGen->set_wait_time(8.0f);
     timerIncreaseNumPerGen->set_on_timeout([this](){
-        numPerGen += 1;
+        numPerGen += 0.5;
     });
     timerIncreaseNumPerGen->start();
 
@@ -83,6 +85,8 @@ MainWindow::MainWindow(QWidget *parent)
     frameTimer.start();
 }
 
+
+
 MainWindow::~MainWindow()
 {
     unloadResources();
@@ -101,6 +105,19 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+
+/*
+功能：
+    •	加载所有静态图片（背景、子弹、准星、炮台、炮管等）。
+    •	使用 Atlas 类加载各种图集资源（动画帧图片）：
+    •	炮管开火动画
+    •	三种小鸡（Fast、Medium、Slow）
+    •	爆炸动画
+    •	创建并配置多个 QSoundEffect，用于背景音乐、失败、受伤、开火等音效。
+    •	初始化全局图集指针。
+    •	加载自定义字体（如果加载失败则回退使用 Arial）。
+    •	加载英文单词字典并启动第一次拼写挑战。
+ */
 void MainWindow::loadResources()
 {
     // 加载图片
@@ -114,12 +131,13 @@ void MainWindow::loadResources()
 
     // 加载图集
     m_atlasBarrelFire.load(":/res/Resources/barrel_fire_%1.png", 3);
-    m_atlasChickenFast.load(":/res/Resources/chicken_fast_%1.png", 4);
-    m_atlasChickenMedium.load(":/res/Resources/chicken_medium_%1.png", 6);
-    m_atlasChickenSlow.load(":/res/Resources/chicken_slow_%1.png", 8);
+    m_atlasChickenFast.load(":/res/Resources/chiikawa_3/chiikawa_3-%1.png", 6);
+    m_atlasChickenMedium.load(":/res/Resources/chiikawa_1/chiikawa_1-%1.png", 17);
+    m_atlasChickenSlow.load(":/res/Resources/chiikawa_2/chiikawa_2-%1.png", 21);
     m_atlasExplosion.load(":/res/Resources/explosion_%1.png", 5);
 
     // 加载音频
+    // 🆘重大问题🆘 qt不支持mp3 但是修不修都可以 不影响展示
     soundBgm = new QSoundEffect(this);
     soundBgm->setSource(QUrl("qrc:/res/Resources/bgm.mp3"));
     soundBgm->setLoopCount(QSoundEffect::Infinite);
@@ -150,7 +168,6 @@ void MainWindow::loadResources()
     atlasExplosion = new Atlas(m_atlasExplosion);
 
 
-
     // 加载字体
     int fontId = QFontDatabase::addApplicationFont(":/res/Resources/IPix.ttf");
     if (fontId != -1) {
@@ -164,6 +181,12 @@ void MainWindow::loadResources()
         gameFont.setFamily("Arial");
     }
     gameFont.setPointSize(28);
+
+    // 加载单词词典并启动拼写游戏
+    loadWordDictionary();
+    if (!wordDictionary.isEmpty()) {
+        startNewWordChallenge();
+    }
 }
 
 void MainWindow::unloadResources()
@@ -180,6 +203,68 @@ void MainWindow::unloadResources()
     sound_explosion = nullptr;
 }
 
+
+/*
+功能：
+    •	读取 :/res/Resources/words_list.txt 中的单词（每两行：英文+中文）。
+    •	将其存入 wordDictionary 映射中，供拼写小游戏使用。
+    •	成功加载后输出日志。
+ */
+void MainWindow::loadWordDictionary()
+{
+    // 从资源文件中加载单词列表
+    QFile file(":/res/Resources/words_list.txt");
+    if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        QTextStream in(&file);
+        QString english, chinese;
+        while (!in.atEnd()) {
+            english = in.readLine();
+            if (!in.atEnd()) {
+                chinese = in.readLine();
+                wordDictionary[english] = chinese;
+            }
+        }
+        file.close();
+        qDebug() << "加载了" << wordDictionary.size() << "个单词";
+    } else {
+        qDebug() << "无法打开单词列表文件";
+    }
+}
+
+void MainWindow::startNewWordChallenge()
+{
+    /* Debug内容
+    if (wordDictionary.isEmpty()) {
+        qDebug() << "词典为空，无法开始拼写挑战";
+        return;
+    }
+    */
+
+    // 随机选择一个单词
+    QStringList words = wordDictionary.keys();
+    int randomIndex = QRandomGenerator::global()->bounded(words.size());
+    currentWord = words[randomIndex];
+    currentDefinition = wordDictionary[currentWord];
+
+    playerInput.clear();
+    isSpellingGameActive = true;
+
+    qDebug() << "新单词挑战:" << currentWord << "-" << currentDefinition;
+}
+
+
+/*
+功能（每帧执行一次）：
+    •	更新所有定时器的逻辑。
+    •	更新所有子弹的位置与状态。
+    •	更新所有小鸡的位置、生命状态及与子弹的碰撞检测。
+    •	处理子弹击中、鸡到达底部（玩家受伤）、鸡死亡等逻辑。
+    •	自动瞄准：如果有小鸡，则瞄准最靠近底部的一只。
+    •	更新炮管开火动画与相机抖动。
+    •	如果满足条件则发射子弹。
+    •	检查玩家生命值，触发游戏结束。
+    •	调用 update() 触发 paintEvent()，完成屏幕重绘。
+ */
 void MainWindow::updateGame()
 {
     static int frameCounter = 0;
@@ -276,7 +361,23 @@ void MainWindow::updateGame()
         fireWeapon();
     }
 
+    // 添加自动瞄准功能
+    if (!chickenList.isEmpty()) {
+        // 找到最近的小鸡（以Y坐标最大的为准，也就是最接近底部的）
+        Chicken* targetChicken = *std::max_element(chickenList.begin(), chickenList.end(),
+                                                   [](Chicken* a, Chicken* b) {
+                                                       return a->get_position().y() < b->get_position().y();
+                                                   });
+
+        // 计算目标方向
+        QPointF targetDirection = targetChicken->get_position() - posBattery;
+        angleBarrel = qAtan2(targetDirection.y(), targetDirection.x()) * 180 / M_PI;
+    }
+
     camera->on_update(delta);
+
+
+
 
     // 检查游戏结束条件
     if (hp <= 0) {
@@ -287,6 +388,21 @@ void MainWindow::updateGame()
     update();
 }
 
+
+/*
+功能：
+    •	使用 QPainter 绘制所有游戏可视元素：
+    •	背景图像
+    •	所有存活的小鸡
+    •	所有子弹
+    •	炮台本体（固定位置）
+    •	炮管（随目标方向旋转）
+    •	炮管静止状态：显示默认图。
+    •	炮管开火状态：播放动画帧。
+    •	玩家血量（心形图标）
+    •	当前分数（右上角文本）
+    •	拼写挑战界面：显示释义和玩家输入。
+*/
 void MainWindow::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
@@ -433,8 +549,60 @@ void MainWindow::paintEvent(QPaintEvent *event)
         qDebug() << "当前分数:" << score;
         lastScore = score;
     }
+    // 绘制拼写游戏界面
+    if (isSpellingGameActive) {
+        int screenWidth = width();
+        int screenHeight = height();
 
-    // 绘制准星
+        // 设置更大的字体
+        QFont largeFont = gameFont;
+        largeFont.setPointSize(40);
+        painter.setFont(largeFont);
+
+        // 绘制中文释义
+        QFontMetrics fmLarge(largeFont);
+        int textWidthDef = fmLarge.horizontalAdvance(currentDefinition);
+        int textHeightDef = fmLarge.height();
+
+        // 绘制背景阴影效果
+        painter.setPen(QColor(55, 55, 55, 255));
+        painter.drawText(
+            (screenWidth - textWidthDef) / 2,
+            (screenHeight / 2) - 50 + textHeightDef,
+            currentDefinition
+            );
+
+        // 绘制前景文字
+        painter.setPen(QColor(255, 255, 255, 255));
+        painter.drawText(
+            (screenWidth - textWidthDef) / 2 - 2,
+            (screenHeight / 2) - 50 + textHeightDef - 2,
+            currentDefinition
+            );
+
+        // 绘制玩家输入
+        int textWidthInput = fmLarge.horizontalAdvance(playerInput);
+        int textHeightInput = fmLarge.height();
+
+        // 绘制背景阴影效果
+        painter.setPen(QColor(55, 55, 55, 255));
+        painter.drawText(
+            (screenWidth - textWidthInput) / 2,
+            (screenHeight / 2) + 30 + textHeightInput,
+            playerInput
+            );
+
+        // 绘制前景文字
+        painter.setPen(QColor(255, 255, 255, 255));
+        painter.drawText(
+            (screenWidth - textWidthInput) / 2 - 2,
+            (screenHeight / 2) + 30 + textHeightInput - 2,
+            playerInput
+            );
+    }
+
+    // VERSION2 中不需要准星
+    /*
     if (!texCrosshair.isNull()) {
         int widthCrosshair = texCrosshair.width();
         int heightCrosshair = texCrosshair.height();
@@ -446,8 +614,11 @@ void MainWindow::paintEvent(QPaintEvent *event)
             );
         painter.drawPixmap(rectCrosshair.toRect(), texCrosshair);
     }
+    */
 }
 
+//VERSION2 中不需要鼠标控制
+/*
 void MainWindow::mouseMoveEvent(QMouseEvent *event)
 {
     posCrosshair.setX(event->position().x());
@@ -468,11 +639,49 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
 {
     isFireKeyDown = false;
 }
+*/
 
+
+/*
+键盘输入处理（拼写+退出）：
+  ·以下是所有外部设备输入处理
+ */
 void MainWindow::keyPressEvent(QKeyEvent *event)
 {
     if (event->key() == Qt::Key_Escape) {
         close();
+    }
+
+    // 处理拼写游戏的输入
+    if (isSpellingGameActive) {
+        // 将按键转换为小写字母
+        QString keyText = event->text().toLower();
+
+        // 检查是否为字母
+        if (keyText.length() == 1 && keyText[0].isLetter()) {
+            QChar key = keyText[0];
+
+            // 检查当前输入位置的正确字母
+            if (playerInput.length() < currentWord.length() &&
+                key == currentWord[playerInput.length()].toLower()) {
+
+                // 添加正确的字母到输入中
+                playerInput += key;
+
+                // 每次输入正确字母就发射一枚子弹
+                isCoolDown = true; // 确保可以开火
+                fireWeapon();
+
+                // 如果完全拼写正确，选择下一个单词
+                if (playerInput.toLower() == currentWord.toLower()) {
+                    // 加分
+                    score += 10;
+
+                    // 延迟一下切换单词，让玩家看到完成
+                    QTimer::singleShot(100, this, &MainWindow::startNewWordChallenge);
+                }
+            }
+        }
     }
 }
 
@@ -495,7 +704,7 @@ void MainWindow::fireWeapon()
     const float lengthBarrel = 105;
     const QPointF posBarrelCenter(640, 610);
 
-    double angleBullet = angleBarrel + (QRandomGenerator::global()->bounded(30) - 15);
+    double angleBullet = angleBarrel; // 移除随机偏差，使用精确角度
     double radians = angleBullet * M_PI / 180;
     QPointF direction(qCos(radians), qSin(radians));
     QPointF bulletPos = posBarrelCenter + direction * lengthBarrel;

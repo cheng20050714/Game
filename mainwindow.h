@@ -31,6 +31,7 @@ QT_END_NAMESPACE
 
 
 
+// ...existing code...
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -41,9 +42,9 @@ public:
 
 protected:
     void paintEvent(QPaintEvent *event) override;
-    void mouseMoveEvent(QMouseEvent *event) override;
-    void mousePressEvent(QMouseEvent *event) override;
-    void mouseReleaseEvent(QMouseEvent *event) override;
+    //void mouseMoveEvent(QMouseEvent *event) override;
+    //void mousePressEvent(QMouseEvent *event) override;
+    //void mouseReleaseEvent(QMouseEvent *event) override;
     void keyPressEvent(QKeyEvent *event) override;
     void closeEvent(QCloseEvent *event) override;
 
@@ -56,6 +57,10 @@ public:
     void checkCollisions();
     void fireWeapon();
     void gameOver();
+
+    // 新增函数
+    void loadWordDictionary();
+    void startNewWordChallenge();
 
     Ui::MainWindow *ui;
     QTimer *gameTimer;
@@ -70,7 +75,7 @@ public:
     QPixmap texBackground;
     QPixmap texBarrelIdle;
 
-    Atlas m_atlasBarrelFire;  // 重命名为 m_ 前缀，避免与全局变量冲突
+    Atlas m_atlasBarrelFire;
     Atlas m_atlasChickenFast;
     Atlas m_atlasChickenMedium;
     Atlas m_atlasChickenSlow;
@@ -102,6 +107,13 @@ public:
     bool isCoolDown = true;
     bool isFireKeyDown = false;
     Animation animationBarrelFire;
+
+    // 拼写游戏相关 VERISON2
+    QMap<QString, QString> wordDictionary; // 英文单词到中文释义的映射
+    QString currentWord;                   // 当前要拼写的单词
+    QString currentDefinition;             // 当前单词的中文释义
+    QString playerInput;                   // 玩家当前输入
+    bool isSpellingGameActive = false;     // 拼写游戏是否激活
 
     QFont gameFont;
     bool isQuit = false;

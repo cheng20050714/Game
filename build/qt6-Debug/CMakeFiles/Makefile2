@@ -84,8 +84,8 @@ clean: CMakeFiles/Game_autogen.dir/clean
 # Target rules for target CMakeFiles/Game.dir
 
 # All Build rule for target.
-CMakeFiles/Game.dir/all: CMakeFiles/Game_autogen_timestamp_deps.dir/all
 CMakeFiles/Game.dir/all: CMakeFiles/Game_autogen.dir/all
+CMakeFiles/Game.dir/all: CMakeFiles/Game_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game.dir/build.make CMakeFiles/Game.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game.dir/build.make CMakeFiles/Game.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/Users/cheng/Documents/Practical Training/Game/build/qt6-Debug/CMakeFiles" --progress-num=1,2,3,4,5,6,7 "Built target Game"
@@ -103,8 +103,8 @@ Game: CMakeFiles/Game.dir/rule
 .PHONY : Game
 
 # codegen rule for target.
-CMakeFiles/Game.dir/codegen: CMakeFiles/Game_autogen_timestamp_deps.dir/all
 CMakeFiles/Game.dir/codegen: CMakeFiles/Game_autogen.dir/all
+CMakeFiles/Game.dir/codegen: CMakeFiles/Game_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game.dir/build.make CMakeFiles/Game.dir/codegen
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="/Users/cheng/Documents/Practical Training/Game/build/qt6-Debug/CMakeFiles" --progress-num=1,2,3,4,5,6,7 "Finished codegen for target Game"
 .PHONY : CMakeFiles/Game.dir/codegen
